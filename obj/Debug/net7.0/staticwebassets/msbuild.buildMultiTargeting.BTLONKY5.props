@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BTLONKY5.props" />
+</Project>
