@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("NhaHangDB");
-builder.Services.AddDbContext<QLDBcontext>(opptions => opptions.UseSqlServer(connectionString));
+builder.Services.AddDbContext<QLDBcontext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -21,9 +21,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
