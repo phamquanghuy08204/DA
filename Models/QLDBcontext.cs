@@ -8,12 +8,10 @@ namespace BTLONKY5.Models
     {
         public QLDBcontext(DbContextOptions<QLDBcontext> options): base(options) { }
         public DbSet<Account> Accounts { get; set; }
-
-
-
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>().ToTable("Account");
+            modelBuilder.Entity<Account>().ToTable("tbAccount");
         }
     }   
 }
