@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BTLONKY5.Models
 {
@@ -7,6 +8,7 @@ namespace BTLONKY5.Models
 		[Key]
 		public int ID { get; set; }
 		public string NameFood { get; set; }
+		[ForeignKey("Category")]
 		public int IDCategory { get; set;}
 		public string ImgFood { get; set; }
 		public string Description { get; set; }
