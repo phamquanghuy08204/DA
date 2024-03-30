@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using BTLONKY5.Models;
 
 namespace BTLONKY5.Models
 {
@@ -12,5 +13,6 @@ namespace BTLONKY5.Models
         {
             modelBuilder.Entity<Account>().ToTable("tbAccount");
         }
+        public DbSet<BTLONKY5.Models.Food> Food { get; set; } = default!;
     }   
 }
