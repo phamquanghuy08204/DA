@@ -6,9 +6,6 @@
 public class Booking
 {
 
-	//
-	// TODO: Add constructor logic here
-	//
 		[Key]
 		public int ID {  get; set; }
 		public int IDTable { get; set; }

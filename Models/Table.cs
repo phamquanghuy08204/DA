@@ -3,12 +3,10 @@
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public class Class1
+public class Table
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    [Key]
+    public int ID { get; set; }
+    public bool Status { get; set; }
+    public int Capacity { get; set; }
 }
