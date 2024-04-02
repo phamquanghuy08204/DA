@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BTLONKY5.Models.Booking>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDTable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameBooking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SdtBooking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDAcount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDFood)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDTable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameBooking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SdtBooking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDAcount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDFood)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
