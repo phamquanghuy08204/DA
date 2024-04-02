@@ -10,6 +10,8 @@ namespace BTLONKY5.Models
         [ForeignKey("Table")]
         public int IDTable { get; set; }
         [ForeignKey("Acount")]
+        public string NameBooking { get; set; }
+        public int SdtBooking { get; set; }
         public int IDAcount { get; set; }
         [ForeignKey("Food")]
         public int IDFood { get; set; }
