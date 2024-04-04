@@ -1,0 +1,381 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hanoi Restaurant</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="ColoShop">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+	<link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+<style>
+     body {
+       font-family: Arial, sans-serif;
+     }
+     .table {
+       width: 100px;
+       height: 100px;
+       border: 2px solid #ccc;
+       margin: 10px;
+       display: inline-block;
+       cursor: pointer;
+       position: relative;
+     }
+     .table.reserved {
+       background-color: red;
+     }
+     .table.empty {
+       background-color: lightgreen;
+     }
+     .table-info {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       text-align: center;
+       background-color: white;
+       padding: 10px;
+       border: 1px solid #ccc;
+       display: none;
+       z-index: 999;
+     }
+   </style>
+</head>
+
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header trans_300">
+
+		<!-- Top Navigation -->
+
+		<div class="top_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="top_nav_left">free shipping on all u.s orders over $50</div>
+					</div>
+					<div class="col-md-6 text-right">
+						<div class="top_nav_right">
+							<ul class="top_nav_menu">
+
+								<!-- Currency / Language / My Account -->
+
+								<li class="currency">
+									<a href="#">
+										usd
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="currency_selection">
+										<li><a href="#">cad</a></li>
+										<li><a href="#">aud</a></li>
+										<li><a href="#">eur</a></li>
+										<li><a href="#">gbp</a></li>
+									</ul>
+								</li>
+								<li class="language">
+									<a href="#">
+										English
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="language_selection">
+										<li><a href="#">French</a></li>
+										<li><a href="#">Italian</a></li>
+										<li><a href="#">German</a></li>
+										<li><a href="#">Spanish</a></li>
+									</ul>
+								</li>
+								<li class="account">
+									<a href="Profile.html">
+										My Account
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="account_selection">
+										<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+										<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Navigation -->
+
+		<div class="main_nav_container">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-right">
+						<div class="logo_container">
+							<a href="#">Hanoi<span>Restaurant</span></a>
+						</div>
+						<nav class="navbar">
+							<ul class="navbar_menu">
+								<li><a href="Index.html">home</a></li>
+								<li><a href="categories.html">menu</a></li>
+								<li><a href="Promotion.html">about us</a></li>
+								<li><a href="single.html">membership</a></li>
+								<li><a href="contact.html">contact</a></li>
+							</ul>
+							<ul class="navbar_user">
+								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+								<li><a href="Profile.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+								<li class="checkout">
+									<a href="shoppingcart.html">
+										<i class="fa fa-shopping-cart" aria-hidden="true" ></i>
+										<span id="checkout_items" class="checkout_items">3</span>
+									</a>
+								</li>
+							</ul>
+							<div class="hamburger_container">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<div class="fs_menu_overlay"></div>
+	<div class="hamburger_menu">
+		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+		<div class="hamburger_menu_content text-right">
+			<ul class="menu_top_nav">
+				<li class="menu_item has-children">
+					<a href="#">
+						usd
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#">cad</a></li>
+						<li><a href="#">aud</a></li>
+						<li><a href="#">eur</a></li>
+						<li><a href="#">gbp</a></li>
+					</ul>
+				</li>
+				<li class="menu_item has-children">
+					<a href="#">
+						English
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#">French</a></li>
+						<li><a href="#">Italian</a></li>
+						<li><a href="#">German</a></li>
+						<li><a href="#">Spanish</a></li>
+					</ul>
+				</li>
+				<li class="menu_item has-children">
+					<a href="#">
+						My Account
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+						<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+					</ul>
+				</li>
+				<li><a href="Index.html">home</a></li>
+				<li><a href="categories.html">menu</a></li>
+				<li><a href="Promotion.html">about us</a></li>
+				<li><a href="single.html">membership</a></li>
+				<li><a href="contact.html">connect to us</a></li>
+				<li><a href="contact.html">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Slider -->
+
+	<div class="main_slider" style="background-image:url(Img/banner_1.jpg)">
+		<div class="container fill_height">
+			<div class="row align-items-center fill_height">
+				<div class="col">
+					<div class="main_slider_content">
+						<h6>Chương trình hội viên Hanoi Restaurant</h6>
+						<h1>Get up to 30% Off </h1>
+						<div class="red_button shop_now_button"><a href="categories.html">shop now</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Banner -->
+
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(Img/combo_1.jpg)">
+						<div class="banner_category">
+							<a href="Bandat.html">Đặt bàn</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(Img/combo_2.jpg)">
+						<div class="banner_category">
+							<a href="Datship.html">Đặt Ship</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(Img/combo_3.jpg)">
+						<div class="banner_category">
+							<a href="Datship.html">Đặt tiệc tại gia</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+     <h1 style="text-align: center;">Quản lý đặt bàn</h1>
+
+<div class="tables" style="text-align: center;">
+  <div class="table" data-id="1">Bàn 1</div>
+  <div class="table" data-id="2">Bàn 2</div>
+  <div class="table" data-id="3">Bàn 3</div>
+  <div class="table" data-id="3">Bàn 4</div>
+  <div class="table" data-id="3">Bàn 5</div>
+  <div class="table" data-id="3">Bàn 6</div>
+  <div class="table" data-id="3">Bàn 7</div>
+
+  <div class="table" data-id="3">Bàn 8</div>
+  <div class="table" data-id="3">Bàn 9</div>
+  <div class="table" data-id="3">Bàn 10</div>
+  <div class="table" data-id="3">Bàn 11</div>
+  <div class="table" data-id="3">Bàn 12</div>
+
+
+  <div class="table" data-id="3">Bàn 12</div>
+  <div class="table" data-id="3">Bàn 14</div>
+  <div class="table" data-id="3">Bàn 15</div>
+  <div class="table" data-id="3">Bàn 16</div>
+  <div class="table" data-id="3">Bàn 17</div>
+  <div class="table" data-id="3">Bàn 18</div>
+  <div class="table" data-id="3">Bàn 19</div>
+  <div class="table" data-id="3">Bàn 20</div>
+  <!-- Thêm các bàn khác vào đây -->
+</div>
+
+<div class="table-info" id="table-info">
+  <h2>Thông tin bàn</h2>
+  <p><strong>Số người:</strong> <span id="num-customers"></span></p>
+  <p><strong>Đặt cọc:</strong> <span id="deposit"></span></p>
+  <button id="merge-btn">Ghép bàn</button>
+  <button id="change-btn">Đổi bàn</button>
+</div>
+
+<script>
+  const tables = document.querySelectorAll('.table');
+  const tableInfo = document.getElementById('table-info');
+  const numCustomers = document.getElementById('num-customers');
+  const deposit = document.getElementById('deposit');
+  const mergeBtn = document.getElementById('merge-btn');
+  const changeBtn = document.getElementById('change-btn');
+
+  tables.forEach(table => {
+    table.addEventListener('click', () => {
+      const id = table.getAttribute('data-id');
+      const num = Math.floor(Math.random() * 6) + 1; // Số người ngẫu nhiên từ 1 đến 6
+      const hasDeposit = Math.random() < 0.5; // Ngẫu nhiên đặt cọc   
+
+      numCustomers.textContent = num;
+      deposit.textContent = hasDeposit ? 'Có' : 'Không';
+
+      tableInfo.style.display = 'block';
+      tableInfo.style.top = `${table.offsetTop + table.offsetHeight}px`;
+      tableInfo.style.left = `${table.offsetLeft}px`;
+
+      if (hasDeposit) {
+        table.classList.add('reserved');
+        table.classList.remove('empty');
+      } else {
+        table.classList.add('empty');
+        table.classList.remove('reserved');
+      }
+
+      mergeBtn.addEventListener('click', () => {
+        alert(`Bạn đã chọn ghép bàn ${id}`);
+        tableInfo.style.display = 'none';
+      });
+
+      changeBtn.addEventListener('click', () => {
+        alert(`Bạn đã chọn đổi bàn ${id}`);
+        tableInfo.style.display = 'none';
+      });
+    });
+  });
+</script>
+
+
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+						<ul class="footer_nav">
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">FAQs</a></li>
+							<li><a href="contact.html">Contact us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="footer_nav_container">
+						<div class="cr">©2018 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a> &amp; distributed by <a href="https://themewagon.com">ThemeWagon</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script src="~/styles/bootstrap4/popper.js"></script>
+<script src="~/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/plugins/easing/easing.js"></script>
+	<script src="~/js/custom.js"></script>
+</body>
+
+</html>
+

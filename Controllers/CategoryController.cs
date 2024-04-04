@@ -18,8 +18,12 @@ namespace BTLONKY5.Controllers
             _context = context;
         }
 
-        // GET: Category
-        public async Task<IActionResult> Index()
+		// GET: Category
+		public async Task<IActionResult> Menu()
+		{
+            return (View());
+		}
+		public async Task<IActionResult> Index()
         {
               return _context.Categories != null ? 
                           View(await _context.Categories.ToListAsync()) :

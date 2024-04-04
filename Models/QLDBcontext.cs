@@ -11,6 +11,8 @@ namespace BTLONKY5.Models
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillInfo> BillInfos { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+
+        public DbSet<BookingFood> bookingFoods { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
@@ -23,7 +25,8 @@ namespace BTLONKY5.Models
             modelBuilder.Entity<Bill>().ToTable("tbBill");
             modelBuilder.Entity<BillInfo>().ToTable("tbBillInfo");
             modelBuilder.Entity<Booking>().ToTable("tbBooking");
-            modelBuilder.Entity<Category>().ToTable("tbCategory");
+			modelBuilder.Entity<BookingFood>().ToTable("tbBookingFood");
+			modelBuilder.Entity<Category>().ToTable("tbCategory");
             modelBuilder.Entity<Food>().ToTable("tbFood");
             modelBuilder.Entity<Statistics>().ToTable("tbStatistics");
             modelBuilder.Entity<Table>().ToTable("tbTable");
