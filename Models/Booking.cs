@@ -9,11 +9,17 @@ namespace BTLONKY5.Models
         public int ID { get; set; }
         [ForeignKey("Table")]
         public int IDTable { get; set; }
-        [ForeignKey("Acount")]
+        [ForeignKey("Account")]
+        public int IDAccount { get; set; }
         public string NameBooking { get; set; }
+        public int sdtBooking { get; set; }
+        public DateOnly Date { get; set; }
+
+        public DateTime Checkin { get; set; }
+
+        public DateTime Checkout { get; set; }
+        
         public int SdtBooking { get; set; }
-        public int IDAcount { get; set; }
-        [ForeignKey("Food")]
         public int IDFood { get; set; }
     }
 }
