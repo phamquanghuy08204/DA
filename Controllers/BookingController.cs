@@ -5,36 +5,43 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using BTLONKY5.Data;
 using BTLONKY5.Models;
 
 namespace BTLONKY5.Controllers
 {
     public class BookingController : Controller
     {
-        private readonly QLDBcontext _context;
+        private readonly BTLONKY5Context _context;
 
-        public BookingController(QLDBcontext context)
+        public BookingController(BTLONKY5Context context)
         {
             _context = context;
         }
 
         // GET: Booking
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Booking()
         {
-              return _context.Bookings != null ? 
-                          View(await _context.Bookings.ToListAsync()) :
-                          Problem("Entity set 'QLDBcontext.Bookings'  is null.");
+            return View();
+        } 
+				
+		public async Task<IActionResult> Index()
+        {
+              return _context.Booking != null ? 
+                          View(await _context.Booking.ToListAsync()) :
+                          Problem("Entity set 'BTLONKY5Context.Booking'  is null.");
         }
 
         // GET: Booking/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Bookings == null)
+            if (id == null || _context.Booking == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Bookings
+            var booking = await _context.Booking
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (booking == null)
             {
@@ -55,7 +62,7 @@ namespace BTLONKY5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,IDTable,NameBooking,SdtBooking,IDAcount,IDFood")] Booking booking)
+        public async Task<IActionResult> Create([Bind("ID,IDTable,IDAccount,NameBooking,sdtBooking,Date,Checkin,Checkout,SdtBooking,IDFood")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -69,12 +76,12 @@ namespace BTLONKY5.Controllers
         // GET: Booking/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Bookings == null)
+            if (id == null || _context.Booking == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Bookings.FindAsync(id);
+            var booking = await _context.Booking.FindAsync(id);
             if (booking == null)
             {
                 return NotFound();
@@ -87,7 +94,7 @@ namespace BTLONKY5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,IDTable,NameBooking,SdtBooking,IDAcount,IDFood")] Booking booking)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,IDTable,IDAccount,NameBooking,sdtBooking,Date,Checkin,Checkout,SdtBooking,IDFood")] Booking booking)
         {
             if (id != booking.ID)
             {
@@ -120,12 +127,12 @@ namespace BTLONKY5.Controllers
         // GET: Booking/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Bookings == null)
+            if (id == null || _context.Booking == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Bookings
+            var booking = await _context.Booking
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (booking == null)
             {
@@ -140,14 +147,14 @@ namespace BTLONKY5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Bookings == null)
+            if (_context.Booking == null)
             {
-                return Problem("Entity set 'QLDBcontext.Bookings'  is null.");
+                return Problem("Entity set 'BTLONKY5Context.Booking'  is null.");
             }
-            var booking = await _context.Bookings.FindAsync(id);
+            var booking = await _context.Booking.FindAsync(id);
             if (booking != null)
             {
-                _context.Bookings.Remove(booking);
+                _context.Booking.Remove(booking);
             }
             
             await _context.SaveChangesAsync();
@@ -156,7 +163,7 @@ namespace BTLONKY5.Controllers
 
         private bool BookingExists(int id)
         {
-          return (_context.Bookings?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Booking?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
