@@ -15,5 +15,7 @@ namespace BTLONKY5.Data
         }
 
         public DbSet<BTLONKY5.Models.Booking> Booking { get; set; } = default!;
+
+        public DbSet<BTLONKY5.Models.Bill> Bill { get; set; } = default!;
     }
 }

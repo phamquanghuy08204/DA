@@ -8,9 +8,6 @@ namespace BTLONKY5.Models
         [Key]
         public int ID { get; set; }
             
-        public DateTime DateCheckin { get; set; }
-
-        public DateTime DateCheckout { get; set; }
         [ForeignKey("Booking")]
         public string IDBooking { get; set; }
 

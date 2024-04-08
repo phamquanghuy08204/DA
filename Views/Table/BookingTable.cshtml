@@ -249,87 +249,102 @@
 		</div>
 	</div>
 
-     <h1 style="text-align: center;">Quản lý đặt bàn</h1>
+		<h1 style="text-align: center;">Quản lý đặt bàn</h1>
 
-<div class="tables" style="text-align: center;">
-  <div class="table" data-id="1">Bàn 1</div>
-  <div class="table" data-id="2">Bàn 2</div>
-  <div class="table" data-id="3">Bàn 3</div>
-  <div class="table" data-id="3">Bàn 4</div>
-  <div class="table" data-id="3">Bàn 5</div>
-  <div class="table" data-id="3">Bàn 6</div>
-  <div class="table" data-id="3">Bàn 7</div>
+		<div class="tables" style="text-align: center;">
+			<div id="table-container" class="table-container">
+				<!-- Thẻ div này sẽ chứa các bàn được tạo bởi mã Javascript -->
+				<div class="table" data-id="1" redirectToMenu(1)>Bàn 1</div>
+				<div class="table" data-id="2" redirectToMenu(2)">Bàn 2</div>
+				<div class="table" data-id="3" redirectToMenu(3)">Bàn 3</div>
+				<div class="table" data-id="4" redirectToMenu(4)">Bàn 4</div>
+				<div class="table" data-id="5" redirectToMenu(5)>Bàn 5</div>
+				<div class="table" data-id="6" redirectToMenu(6)>Bàn 6</div>
+				<div class="table" data-id="7" redirectToMenu(7)>Bàn 7</div>
 
-  <div class="table" data-id="3">Bàn 8</div>
-  <div class="table" data-id="3">Bàn 9</div>
-  <div class="table" data-id="3">Bàn 10</div>
-  <div class="table" data-id="3">Bàn 11</div>
-  <div class="table" data-id="3">Bàn 12</div>
+				<div class="table" data-id="8" redirectToMenu(8)>Bàn 8</div>
+				<div class="table" data-id="9" redirectToMenu(9)>Bàn 9</div>
+				<div class="table" data-id="10" redirectToMenu(10)>Bàn 10</div>
+				<div class="table" data-id="11" redirectToMenu(11)>Bàn 11</div>
+				<div class="table" data-id="12" redirectToMenu(12)>Bàn 12</div>
 
 
-  <div class="table" data-id="3">Bàn 12</div>
-  <div class="table" data-id="3">Bàn 14</div>
-  <div class="table" data-id="3">Bàn 15</div>
-  <div class="table" data-id="3">Bàn 16</div>
-  <div class="table" data-id="3">Bàn 17</div>
-  <div class="table" data-id="3">Bàn 18</div>
-  <div class="table" data-id="3">Bàn 19</div>
-  <div class="table" data-id="3">Bàn 20</div>
-  <!-- Thêm các bàn khác vào đây -->
-</div>
+				<div class="table" data-id="13" redirectToMenu(13)>Bàn 13</div>
+				<div class="table" data-id="14" redirectToMenu(14)>Bàn 14</div>
+				<div class="table" data-id="15" redirectToMenu(15)>Bàn 15</div>
+				<div class="table" data-id="16" redirectToMenu(16)>Bàn 16</div>
+				<div class="table" data-id="17" redirectToMenu(17)>Bàn 17</div>
+				<div class="table" data-id="18" redirectToMenu(18)>Bàn 18</div>
+				<div class="table" data-id="19" redirectToMenu(19)>Bàn 19</div>
+				<div class="table" data-id="20" redirectToMenu(20)>Bàn 20</div>
+			</div>
+		</div>
 
-<div class="table-info" id="table-info">
-  <h2>Thông tin bàn</h2>
-  <p><strong>Số người:</strong> <span id="num-customers"></span></p>
-  <p><strong>Đặt cọc:</strong> <span id="deposit"></span></p>
-  <button id="merge-btn">Ghép bàn</button>
-  <button id="change-btn">Đổi bàn</button>
-</div>
+		<div class="table-info" id="table-info">
+			<h2>Thông tin bàn</h2>
+			<p><strong>Số người:</strong> <span id="num-customers"></span></p>
+			<p><strong>Đặt cọc:</strong> <span id="deposit"></span></p>
+			<button id="merge-btn">Ghép bàn</button>
+			<button id="change-btn">Đổi bàn</button>
+		</div>
 
 <script>
-//  const tables = document.querySelectorAll('.table');
-//const tableInfo = document.getElementById('table-info');
-//const numCustomers = document.getElementById('num-customers');
-//const deposit = document.getElementById('deposit');
-//const mergeBtn = document.getElementById('merge-btn');
-//const changeBtn = document.getElementById('change-btn');
+  const tables = document.querySelectorAll('.table');
+	const tableInfo = document.getElementById('table-info');
+	const numCustomers = document.getElementById('num-customers');
+	const deposit = document.getElementById('deposit');
+	const mergeBtn = document.getElementById('merge-btn');
+	const changeBtn = document.getElementById('change-btn');
+			function redirectToOrderFood(tableId) {
+				window.location.href = '@Url.Action("Menu", "Food")' + '?tableId=' + tableId;
+			
+				// Lấy dữ liệu từ thuộc tính của trang web (cung cấp từ mã C#)
+				var tables = JSON.parse('<%= tableInfo.Value %>');
 
-//tables.forEach(table => {
-//  table.addEventListener('click', () => {
-//	const id = table.getAttribute('data-id');
+				// Tạo HTML cho mỗi bàn và hiển thị trên trang web
+				tables.forEach(function (table) {
+					var tableHtml = '<div class="table" data-id="' + table.Id + '">Bàn ' + table.Id + '</div>';
+					document.getElementById('table-container').innerHTML += tableHtml;
+				});
 
-//	// Thay đổi số người và việc đặt cọc ở đây
-//	const num = prompt("Nhập số người:");
-//	const hasDepositInput = prompt("Có đặt cọc không? (Có/Không)").toLowerCase();
-//	const hasDeposit = hasDepositInput === 'có';
+				tables.forEach(table => {
+					table.addEventListener('click', () => {
+						const id = table.getAttribute('data-id');
 
-//	// Hiển thị thông tin
-//	numCustomers.textContent = num;
-//	deposit.textContent = hasDeposit ? 'Có' : 'Không';
+						// Thay đổi số người và việc đặt cọc ở đây
+						const num = prompt("Nhập số người:");
+						const hasDepositInput = prompt("Có đặt cọc không? (Có/Không)").toLowerCase();
+						const hasDeposit = hasDepositInput === 'có';
 
-//	tableInfo.style.display = 'block';
-//	tableInfo.style.top = `${table.offsetTop + table.offsetHeight}px`;
-//	tableInfo.style.left = `${table.offsetLeft}px`;
+						// Hiển thị thông tin
+						numCustomers.textContent = num;
+						deposit.textContent = hasDeposit ? 'Có' : 'Không';
 
-//	if (hasDeposit) {
-//	  table.classList.add('reserved');
-//	  table.classList.remove('empty');
-//	} else {
-//	  table.classList.add('empty');
-//	  table.classList.remove('reserved');
-//	}
+						tableInfo.style.display = 'block';
+						tableInfo.style.top = `${table.offsetTop + table.offsetHeight}px`;
+						tableInfo.style.left = `${table.offsetLeft}px`;
 
-//	mergeBtn.addEventListener('click', () => {
-//	  alert(`Bạn đã chọn ghép bàn ${id}`);
-//	  tableInfo.style.display = 'none';
-//	});
+						if (hasDeposit) {
+							table.classList.add('reserved');
+							table.classList.remove('empty');
+						} else {
+							table.classList.add('empty');
+							table.classList.remove('reserved');
+						}
 
-//	changeBtn.addEventListener('click', () => {
-//	  alert(`Bạn đã chọn đổi bàn ${id}`);
-//	  tableInfo.style.display = 'none';
-//	});
-//  });
-//});
+						mergeBtn.addEventListener('click', () => {
+							alert(`Bạn đã chọn ghép bàn ${id}`);
+							tableInfo.style.display = 'none';
+						});
+
+						changeBtn.addEventListener('click', () => {
+							alert(`Bạn đã chọn đổi bàn ${id}`);
+							tableInfo.style.display = 'none';
+						});
+					});
+				});
+			}
+			
 
 </script>
 

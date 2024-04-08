@@ -20,9 +20,9 @@ namespace BTLONKY5.Controllers
 
 		// GET: Food
 
-		public async Task<IActionResult> Menu()
+		public async Task<IActionResult> Menu(int TableId)
 		{
-			return (View());
+			return View();
 		}
 
 		public async Task<IActionResult> Index()

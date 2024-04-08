@@ -19,12 +19,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DateCheckin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCheckout)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IDBooking)
             </th>
             <th>
@@ -39,12 +33,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCheckin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCheckout)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IDBooking)
             </td>

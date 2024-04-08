@@ -21,10 +21,17 @@ namespace BTLONKY5.Controllers
         // GET: Table
         public async Task<IActionResult> BookingTable()
         {
-            return (View());
+            return View();
         }
 
-        public async Task<IActionResult> Index()
+		[HttpPost]
+		public ActionResult OrderFood(int tableId)
+		{
+			// Xử lý logic tại đây (ví dụ: chuyển hướng, xử lý dữ liệu, ...)
+			return RedirectToAction("Menu", "Food"); // Chuyển hướng đến action khác nếu cần
+		}
+
+		public async Task<IActionResult> Index()
         {
               return _context.Tables != null ? 
                           View(await _context.Tables.ToListAsync()) :
