@@ -133,7 +133,7 @@ namespace BTLONKY5.Controllers
 
 						//Lưu trạng thái user
 						CurrentUser = loginUser.UserName;
-                        return RedirectToAction("Profile","Account");
+                        return RedirectToAction("Index", "Home");
 					}
 					else
 					{
@@ -147,28 +147,27 @@ namespace BTLONKY5.Controllers
         //--------------------------------------------------------------------------------------------------------------
 
         //--------------------------------------------------------------------------------------------------------------
-        public IActionResult Register()
-        {
-            return View();
-        }
 
+        public IActionResult Register() { return View(); }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("UserName, Password")] Account model)
         {
-			if (ModelState.IsValid)
-			{
-				// Mã hóa mật khẩu
-				SHA256 hashMethod = SHA256.Create();
-				model.Password = Util.Cryptography.GetHash(hashMethod, model.Password);
+            if (ModelState.IsValid)
+            {
+                // Mã hóa mật khẩu
+                SHA256 hashMethod = SHA256.Create();
+                model.Password = Util.Cryptography.GetHash(hashMethod, model.Password);
 
-				_context.Add(model);
-				await _context.SaveChangesAsync();
-				return RedirectToAction(nameof(Login));
-			}
-			return View(model);
-		}
+                _context.Add(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Login));
+            }
+            return View(model);
+        }
         //--------------------------------------------------------------------------------------------------------------
-		// GET: Account/Edit/5
-		public async Task<IActionResult> Edit(int? id)
+        // GET: Account/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Accounts == null)
             {
