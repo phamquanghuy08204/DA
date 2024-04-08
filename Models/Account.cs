@@ -10,7 +10,7 @@ namespace BTLONKY5.Models
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Bạn phải nhập vào Password")]
-        public string Password { get; set; }
+        public string PassWord { get; set; }
 
         public int Role { get; set; }
 

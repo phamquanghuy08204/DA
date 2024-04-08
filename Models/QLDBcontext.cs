@@ -12,7 +12,7 @@ namespace BTLONKY5.Models
         public DbSet<BillInfo> BillInfos { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
-        public DbSet<BookingFood> bookingFoods { get; set; }
+        public DbSet<BookingFood> BookingFoods { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
