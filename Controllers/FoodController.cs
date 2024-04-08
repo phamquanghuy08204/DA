@@ -9,7 +9,7 @@ using BTLONKY5.Models;
 
 namespace BTLONKY5.Controllers
 {
-    public class FoodController : Controller
+    public class FoodController : BaseController
     {
         private readonly QLDBcontext _context;
 
