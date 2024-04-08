@@ -1,13 +1,27 @@
 using BTLONKY5.Models;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//--------------------------------------------------------------------------------
 var connectionString = builder.Configuration.GetConnectionString("NhaHangDB");
 builder.Services.AddDbContext<QLDBcontext>(options => options.UseSqlServer(connectionString));
+//--------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+//---------------------------------------------------------------------------------
 
 var app = builder.Build();
 
@@ -19,6 +33,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
