@@ -13,7 +13,7 @@ namespace BTLONKY5.Models
         public int IDAccount { get; set; }
         public string NameBooking { get; set; }
         public int sdtBooking { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
         public DateTime Checkin { get; set; }
 

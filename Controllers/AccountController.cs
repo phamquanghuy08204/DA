@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTLONKY5.Models;
+using System.Security.Cryptography;
 
 namespace BTLONKY5.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly QLDBcontext _context;
 
@@ -65,9 +66,109 @@ namespace BTLONKY5.Controllers
             }
             return View(account);
         }
+        //-----------------------------------------------------------------------------------
+        public async Task<IActionResult> Profile()
+        {
+			if (!IsLogin)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			else
+			{
+				// Lấy tên người dùng từ session
+				var userName = HttpContext.Session.GetString("USER_NAME");
 
-        // GET: Account/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+				// Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu không
+				var user = await _context.Accounts.FirstOrDefaultAsync(m => m.UserName == userName);
+				if (user == null)
+				{
+					// Nếu không tìm thấy người dùng, có thể xử lý trường hợp này theo ý của bạn,
+					// ví dụ: hiển thị một thông báo lỗi hoặc chuyển hướng đến trang khác
+					return NotFound();
+				}
+
+				// Trả về view và truyền thông tin người dùng
+				return View(user);
+			}
+		}
+        
+        //----------------------------------------------------------------------------------------------------------------
+
+
+        //----------------------------------------------------------------------------------------------------------------
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("ID,UserName,Password")] Account model)
+        {
+			if (ModelState.IsValid)
+			{
+				//Kiem tra 
+				var loginUser = await _context.Accounts.FirstOrDefaultAsync(m => m.UserName == model.UserName);
+				if (loginUser == null)
+				{
+					ModelState.AddModelError("", "Đăng nhập thất bại");
+					return View(model);
+				}
+				else
+				{
+					//Kiểm tra mã MD5 của password hiện tại có khớp với MD% của password đã lưu ko 
+					SHA256 hashMethod = SHA256.Create();
+					if (Util.Cryptography.VerifyHash(hashMethod, model.Password, loginUser.Password))
+					{
+						if (loginUser.Role == 0)
+						{
+							HttpContext.Session.SetString("isAdmin", "true");
+
+						}
+						else
+						{
+							HttpContext.Session.SetString("isAdmin", "false");
+
+						}
+
+						//Lưu trạng thái user
+						CurrentUser = loginUser.UserName;
+                        return RedirectToAction("Profile","Account");
+					}
+					else
+					{
+						ModelState.AddModelError("", "Đăng nhập thất bại");
+						return View(model);
+					}
+				}
+			}
+			return View(model);
+		}
+        //--------------------------------------------------------------------------------------------------------------
+
+        //--------------------------------------------------------------------------------------------------------------
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Register([Bind("UserName, Password")] Account model)
+        {
+			if (ModelState.IsValid)
+			{
+				// Mã hóa mật khẩu
+				SHA256 hashMethod = SHA256.Create();
+				model.Password = Util.Cryptography.GetHash(hashMethod, model.Password);
+
+				_context.Add(model);
+				await _context.SaveChangesAsync();
+				return RedirectToAction(nameof(Login));
+			}
+			return View(model);
+		}
+        //--------------------------------------------------------------------------------------------------------------
+		// GET: Account/Edit/5
+		public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Accounts == null)
             {
