@@ -1,11 +1,10 @@
 ﻿using BTLONKY5.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using BTLONKY5.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<BTLONKY5Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BTLONKY5Context") ?? throw new InvalidOperationException("Connection string 'BTLONKY5Context' not found.")));
+builder.Services.AddDbContext<QLDBcontext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NhaHangDB") ?? throw new InvalidOperationException("Connection string 'NhaHangDB' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

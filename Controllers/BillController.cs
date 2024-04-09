@@ -5,92 +5,91 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BTLONKY5.Data;
 using BTLONKY5.Models;
 
 namespace BTLONKY5.Controllers
 {
-    public class BillController : Controller
+    public class BillsController : Controller
     {
-        private readonly BTLONKY5Context _context;
+        private readonly QLDBcontext _context;
 
-        public BillController(BTLONKY5Context context)
+        public BillsController(QLDBcontext context)
         {
             _context = context;
         }
 
-        // GET: Bill
+        // GET: Bills
         public async Task<IActionResult> Index()
         {
-              return _context.Bill != null ? 
-                          View(await _context.Bill.ToListAsync()) :
-                          Problem("Entity set 'BTLONKY5Context.Bill'  is null.");
+              return _context.Bills != null ? 
+                          View(await _context.Bills.ToListAsync()) :
+                          Problem("Entity set 'QLDBcontext.Bills'  is null.");
         }
 
-        // GET: Bill/Details/5
+        // GET: Bills/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Bill == null)
+            if (id == null || _context.Bills == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bill
+            var Bills = await _context.Bills
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (bill == null)
+            if (Bills == null)
             {
                 return NotFound();
             }
 
-            return View(bill);
+            return View(Bills);
         }
 
-        // GET: Bill/Create
+        // GET: Bills/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Bill/Create
+        // POST: Bills/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill bill)
+        public async Task<IActionResult> Create([Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill Bills)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bill);
+                _context.Add(Bills);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(bill);
+            return View(Bills);
         }
 
-        // GET: Bill/Edit/5
+        // GET: Bills/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Bill == null)
+            if (id == null || _context.Bills == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bill.FindAsync(id);
-            if (bill == null)
+            var Bills = await _context.Bills.FindAsync(id);
+            if (Bills == null)
             {
                 return NotFound();
             }
-            return View(bill);
+            return View(Bills);
         }
 
-        // POST: Bill/Edit/5
+        // POST: Bills/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill bill)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill Bills)
         {
-            if (id != bill.ID)
+            if (id != Bills.ID)
             {
                 return NotFound();
             }
@@ -99,12 +98,12 @@ namespace BTLONKY5.Controllers
             {
                 try
                 {
-                    _context.Update(bill);
+                    _context.Update(Bills);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BillExists(bill.ID))
+                    if (!BillsExists(Bills.ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +114,49 @@ namespace BTLONKY5.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(bill);
+            return View(Bills);
         }
 
-        // GET: Bill/Delete/5
+        // GET: Bills/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Bill == null)
+            if (id == null || _context.Bills == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bill
+            var Bills = await _context.Bills
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (bill == null)
+            if (Bills == null)
             {
                 return NotFound();
             }
 
-            return View(bill);
+            return View(Bills);
         }
 
-        // POST: Bill/Delete/5
+        // POST: Bills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Bill == null)
+            if (_context.Bills == null)
             {
-                return Problem("Entity set 'BTLONKY5Context.Bill'  is null.");
+                return Problem("Entity set 'BTLONKY5Context.Bills'  is null.");
             }
-            var bill = await _context.Bill.FindAsync(id);
-            if (bill != null)
+            var Bills = await _context.Bills.FindAsync(id);
+            if (Bills != null)
             {
-                _context.Bill.Remove(bill);
+                _context.Bills.Remove(Bills);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BillExists(int id)
+        private bool BillsExists(int id)
         {
-          return (_context.Bill?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Bills?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BTLONKY5.Data;
 using BTLONKY5.Models;
 
 namespace BTLONKY5.Controllers
 {
     public class BookingController : Controller
     {
-        private readonly BTLONKY5Context _context;
+        private readonly QLDBcontext _context;
 
-        public BookingController(BTLONKY5Context context)
+        public BookingController(QLDBcontext context)
         {
             _context = context;
         }
@@ -22,25 +21,25 @@ namespace BTLONKY5.Controllers
 		// GET: Booking
 		public async Task<IActionResult> Booking()
 		{
-			var booking = await _context.Booking.ToListAsync();
+			var booking = await _context.Bookings.ToListAsync();
 			return View(booking);
 		}
 		public async Task<IActionResult> Index()
         {
-              return _context.Booking != null ? 
-                          View(await _context.Booking.ToListAsync()) :
+              return _context.Bookings != null ? 
+                          View(await _context.Bookings.ToListAsync()) :
                           Problem("Entity set 'BTLONKY5Context.Booking'  is null.");
         }
 
         // GET: Booking/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Booking == null)
+            if (id == null || _context.Bookings == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Booking
+            var booking = await _context.Bookings
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (booking == null)
             {
@@ -75,12 +74,12 @@ namespace BTLONKY5.Controllers
         // GET: Booking/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Booking == null)
+            if (id == null || _context.Bookings == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Booking.FindAsync(id);
+            var booking = await _context.Bookings.FindAsync(id);
             if (booking == null)
             {
                 return NotFound();
@@ -126,12 +125,12 @@ namespace BTLONKY5.Controllers
         // GET: Booking/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Booking == null)
+            if (id == null || _context.Bookings == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Booking
+            var booking = await _context.Bookings
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (booking == null)
             {
@@ -146,14 +145,14 @@ namespace BTLONKY5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Booking == null)
+            if (_context.Bookings == null)
             {
                 return Problem("Entity set 'BTLONKY5Context.Booking'  is null.");
             }
-            var booking = await _context.Booking.FindAsync(id);
+            var booking = await _context.Bookings.FindAsync(id);
             if (booking != null)
             {
-                _context.Booking.Remove(booking);
+                _context.Bookings.Remove(booking);
             }
             
             await _context.SaveChangesAsync();
@@ -162,7 +161,7 @@ namespace BTLONKY5.Controllers
 
         private bool BookingExists(int id)
         {
-          return (_context.Booking?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Bookings?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
