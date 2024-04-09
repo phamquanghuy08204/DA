@@ -14,6 +14,6 @@ namespace BTLONKY5.Models
 
         public int Role { get; set; }
 
-        public string Img { get; set; }
+       // public string Img { get; set; }
     }
 }

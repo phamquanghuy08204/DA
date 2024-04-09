@@ -1,32 +1,46 @@
 ﻿using BTLONKY5.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace BTLONKY5.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+	public class HomeController : BaseController
+	{
+		private readonly ILogger<HomeController> _logger;
+		private readonly QLDBcontext _context;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+	
+		public HomeController(QLDBcontext context, ILogger<HomeController> logger)
+		{
+			_context = context;
+			_logger = logger;
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public async Task<IActionResult> Index()
+		{
+			var viewModel = new IndexViewModel
+			{
+				Categories = await _context.Categories.ToListAsync(),
+				Foods = await _context.Foods.ToListAsync(),
+			};
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+			return View(viewModel);
+		}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+		public IActionResult Contact()
+		{
+			return View();
+		}
+		public IActionResult Privacy()
+		{
+			return View();
+		}
+
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		public IActionResult Error()
+		{
+			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+		}
+	}
 }

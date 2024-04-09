@@ -25,13 +25,19 @@ namespace BTLONKY5.Controllers
 		}
 		public async Task<IActionResult> Index()
         {
-              return _context.Categories != null ? 
-                          View(await _context.Categories.ToListAsync()) :
-                          Problem("Entity set 'QLDBcontext.Categories'  is null.");
-        }
+			var categories = await _context.Categories.ToListAsync();
 
-        // GET: Category/Details/5
-        public async Task<IActionResult> Details(int? id)
+			if (categories == null || !categories.Any())
+			{
+				return NotFound();
+			}
+
+			return View(categories);
+		}
+
+
+		// GET: Category/Details/5
+		public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Categories == null)
             {
@@ -160,7 +166,8 @@ namespace BTLONKY5.Controllers
 
         private bool CategoryExists(int id)
         {
-          return (_context.Categories?.Any(e => e.ID == id)).GetValueOrDefault();
-        }
+            return _context.Categories.Any(e => e.ID == id);
+
+		}
     }
 }

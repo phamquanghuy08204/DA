@@ -119,11 +119,11 @@ namespace BTLONKY5.Controllers
 
                 // Kiểm tra xem mật khẩu đã nhập có khớp với mật khẩu đã lưu trong cơ sở dữ liệu không
                 SHA256 hashMethod = SHA256.Create();
-                if (Cryptography.VerifyHash(hashMethod, model.PassWord, loginUser.PassWord))
+                if (Util.Cryptography.VerifyHash(hashMethod, model.PassWord, loginUser.PassWord))
                 {
                     // Lưu trạng thái người dùng vào Session
-                    HttpContext.Session.SetString("UserName", model.UserName);
-                    HttpContext.Session.SetString("Role", loginUser.Role.ToString());
+                    CurrentUser = loginUser.UserName;
+                  //  HttpContext.Session.SetString("Role", loginUser.Role.ToString());
 
                     // Chuyển hướng đến trang chính sau khi đăng nhập thành công
                     return RedirectToAction("Index", "Home");
