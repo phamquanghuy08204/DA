@@ -21,7 +21,8 @@ namespace BTLONKY5.Controllers
         // GET: Table
         public async Task<IActionResult> BookingTable()
         {
-            return (View());
+			var bookingtable = await _context.Tables.ToListAsync();
+			return View(bookingtable);
         }
 
         public async Task<IActionResult> Index()

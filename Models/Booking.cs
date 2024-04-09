@@ -19,7 +19,6 @@ namespace BTLONKY5.Models
 
         public DateTime Checkout { get; set; }
         
-        public int SdtBooking { get; set; }
         public int IDFood { get; set; }
     }
 }

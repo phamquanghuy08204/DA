@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Hanoi Restaurant</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="ColoShop">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+	<link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+	<link rel="stylesheet" href="~/plugins/themify-icons/themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="~/styles/contact_styles.css">
+	<link rel="stylesheet" type="text/css" href="~/styles/contact_responsive.css">
+	<link rel="stylesheet" type="text/css" href="~/styles/main_styles.css	">
+	<style>
+		body, html {
+			height: 100%;
+			margin: 0;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		.main {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.form-container {
+			width: 50%;
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		.row1, .row2, .row3, .row4, .row5, .row6 {
+			display: flex;
+			align-items: center;
+		}
+
+		.row1, .row2, .row3 {
+			justify-content: space-between;
+		}
+
+		.row4, .row5, .row6 {
+			justify-content: center;
+		}
+
+		input[type="text"],
+		input[type="tel"],
+		input[type="number"],
+		select,
+		textarea {
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+
+			button:hover {
+				background-color: #45a049;
+			}
+
+		.footer {
+			display: flex;
+			justify-content: space-around;
+			background-color: #ffffff;
+			color: white;
+			padding: 20px;
+		}
+
+		.column {
+			width: 20%;
+		}
+
+			.column h3 {
+				font-size: 18px;
+			}
+
+			.column p {
+				margin: 10px 0;
+			}
+
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+
+			ul li {
+				margin-bottom: 5px;
+			}
+
+		.social-icons img {
+			width: 30px;
+			margin-right: 10px;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="super_container">
+
+		<!-- Header -->
+
+		<header class="header trans_300">
+
+			<!-- Top Navigation -->
+
+			<div class="top_nav">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="top_nav_left">free shipping on all u.s orders over $50</div>
+						</div>
+						<div class="col-md-6 text-right">
+							<div class="top_nav_right">
+								<ul class="top_nav_menu">
+
+									<!-- Currency / Language / My Account -->
+
+									<li class="currency">
+										<a href="#">
+											usd
+											<i class="fa fa-angle-down"></i>
+										</a>
+										<ul class="currency_selection">
+											<li><a href="#">cad</a></li>
+											<li><a href="#">aud</a></li>
+											<li><a href="#">eur</a></li>
+											<li><a href="#">gbp</a></li>
+										</ul>
+									</li>
+									<li class="language">
+										<a href="#">
+											English
+											<i class="fa fa-angle-down"></i>
+										</a>
+										<ul class="language_selection">
+											<li><a href="#">French</a></li>
+											<li><a href="#">Italian</a></li>
+											<li><a href="#">German</a></li>
+											<li><a href="#">Spanish</a></li>
+										</ul>
+									</li>
+									<li class="account">
+										<a href="Profile.html">
+											My Account
+											<i class="fa fa-angle-down"></i>
+										</a>
+										<ul class="account_selection">
+											<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+											<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+
+			<div class="main_nav_container">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-right">
+							<div class="logo_container">
+								<a href="#">Hanoi<span>Restaurant</span></a>
+							</div>
+							<nav class="navbar">
+								<ul class="navbar_menu">
+									<li><a href="Index.html">home</a></li>
+									<li><a href="categories.html">menu</a></li>
+									<li><a href="Promotion.html">about us</a></li>
+									<li><a href="single.html">membership</a></li>
+									<li><a href="contact.html">connect to us</a></li>
+									<li><a href="contact.html">contact</a></li>
+								</ul>
+								<ul class="navbar_user">
+									<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+									<li><a href="Profile.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+									<li class="checkout">
+										<a href="shoppingcart.html">
+											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											<span id="checkout_items" class="checkout_items">3</span>
+										</a>
+									</li>
+								</ul>
+								<div class="hamburger_container">
+									<i class="fa fa-bars" aria-hidden="true"></i>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<div class="fs_menu_overlay"></div>
+		<div class="hamburger_menu">
+			<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+			<div class="hamburger_menu_content text-right">
+				<ul class="menu_top_nav">
+					<li class="menu_item has-children">
+						<a href="#">
+							usd
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#">cad</a></li>
+							<li><a href="#">aud</a></li>
+							<li><a href="#">eur</a></li>
+							<li><a href="#">gbp</a></li>
+						</ul>
+					</li>
+					<li class="menu_item has-children">
+						<a href="#">
+							English
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#">French</a></li>
+							<li><a href="#">Italian</a></li>
+							<li><a href="#">German</a></li>
+							<li><a href="#">Spanish</a></li>
+						</ul>
+					</li>
+					<li class="menu_item has-children">
+						<a href="#">
+							My Account
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+							<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+						</ul>
+					</li>
+					<li><a href="Index.html">home</a></li>
+					<li><a href="categories.html">menu</a></li>
+					<li><a href="Promotion.html">about us</a></li>
+					<li><a href="single.html">membership</a></li>
+					<li><a href="contact.html">connect to us</a></li>
+					<li><a href="contact.html">contact</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Slider -->
+
+		<div class="main_slider" style="background-image:url(~/Img/banner_2.jpg)">
+			<div class="container fill_height">
+				<div class="row align-items-center fill_height">
+					<div class="col">
+						<div class="main_slider_content">
+							<h6>Chương trình hội viên Hanoi Restaurant</h6>
+							<h1>Get up to 30% Off!!! </h1>
+							<div class="red_button shop_now_button"><a href="categories.html">Đặt bàn ngay thôi</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Banner -->
+
+		<div class="banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="banner_item align-items-center" style="background-image:url(~/Img/combo_1.jpg)">
+							<div class="banner_category">
+								<a href="categories.html">Đặt bàn</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="banner_item align-items-center" style="background-image:url(~/Img/combo_2.jpg)">
+							<div class="banner_category">
+								<a href="categories.html">Đặt Ship</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="banner_item align-items-center" style="background-image:url(~/Img/combo_3.jpg)">
+							<div class="banner_category">
+								<a href="single.html">Đặt tiệc tại gia</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		@model List<BTLONKY5.Models.Booking>
+
+		<h2 style="margin-top: 100px; text-align: center;">Đặt bàn</h2>
+		<main>
+			@foreach (var item in Model)
+			{
+				<form action="~/Food/Menu" method="post" class="form-container" style="text-align: center;">
+					<input type="hidden" name="tableId" value="@item.IDTable" />
+					<div class="form-group row1" style="margin-top: 50px;">
+						<label for="ten">Tên của bạn:</label>
+						<input type="text" id="ten" name="ten" placeholder="Nhập tên của bạn" value="@item.NameBooking">
+					</div>
+					<div class="form-group row2">
+						<label for="dienthoai">Số điện thoại:</label>
+						<input type="tel" id="dienthoai" name="dienthoai" placeholder="Nhập số điện thoại" value="@item.sdtBooking">
+					</div>
+					<div class="form-group row4">
+						<label for="ngaydat">Ngày đặt:</label>
+						<input type="date" id="ngaydat" name="ngaydat" value="@item.Date.ToString("yyyy-MM-dd")">
+					</div>
+					<div class="form-group row4">
+						<label for="sokhach">Số khách:</label>
+						<input type="number" id="sokhach" name="sokhach" min="1" max="100" value="1">
+					</div>
+					<div class="form-group row4">
+						<label for="khunggio">Khung giờ:</label>
+						<select id="khunggio" name="khunggio">
+							<option value="">Chọn khung giờ</option>
+							<option value="khunggio1">10:00 - 12:00</option>
+							<option value="khunggio2">12:00 - 14:00</option>
+							<option value="khunggio3">14:00 - 16:00</option>
+						</select>
+					</div>
+					<div class="form-group row6">
+						<button type="submit">Đặt bàn</button>
+					</div>
+				</form>
+			}
+		</main>
+
+
+
+		<footer class="footer">
+			<div class="column">
+				<h3>Thông tin nhà hàng</h3>
+				<p>Logo nhà hàng</p>
+				<p><strong>Tên nhà hàng:</strong> Tên nhà hàng của bạn</p>
+				<p><strong>Slogan:</strong> Slogan ngắn gọn của nhà hàng</p>
+			</div>
+			<div class="column">
+				<h3>Liên kết nhanh</h3>
+				<ul>
+					<li><a href="#">Trang chủ</a></li>
+					<li><a href="#">Menu</a></li>
+					<li><a href="#">Thông tin nhà hàng</a></li>
+					<li><a href="#">Chính sách hội viên</a></li>
+					<li><a href="#">Khuyến mãi</a></li>
+					<li><a href="#">Tuyển dụng</a></li>
+				</ul>
+			</div>
+			<div class="column">
+				<h3>Thông tin liên hệ</h3>
+				<p>Địa chỉ: Địa chỉ của nhà hàng</p>
+				<p>Số điện thoại: Số điện thoại của nhà hàng</p>
+				<p>Email: Email của nhà hàng</p>
+			</div>
+			<div class="column">
+				<h3>Mạng xã hội</h3>
+				<ul class="social-icons">
+					<li><a href="#"><img src="facebook-icon.png" alt="Facebook"></a></li>
+					<li><a href="#"><img src="twitter-icon.png" alt="Twitter"></a></li>
+					<li><a href="#"><img src="instagram-icon.png" alt="Instagram"></a></li>
+				</ul>
+			</div>
+			<div class="column">
+				<h3>Hình ảnh thanh toán</h3>
+				<img src="payment-icon1.png" alt="Payment Method">
+				<img src="payment-icon2.png" alt="Payment Method">
+				<img src="payment-icon3.png" alt="Payment Method">
+			</div>
+		</footer>
+
+
+	</div>
+
+	<script src="~/js/jquery-3.2.1.min.js"></script>
+	<script src="~/styles/bootstrap4/popper.js"></script>
+	<script src="~/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="~/plugins/easing/easing.js"></script>
+	<script src="~/js/custom.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+	<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script src="~/js/contact_custom.js"></script>
+</body>
+
+</html>

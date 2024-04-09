@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using BTLONKY5.Data;
 using BTLONKY5.Models;
 
 namespace BTLONKY5.Controllers
 {
     public class BillController : Controller
     {
-        private readonly QLDBcontext _context;
+        private readonly BTLONKY5Context _context;
 
-        public BillController(QLDBcontext context)
+        public BillController(BTLONKY5Context context)
         {
             _context = context;
         }
@@ -21,20 +22,20 @@ namespace BTLONKY5.Controllers
         // GET: Bill
         public async Task<IActionResult> Index()
         {
-              return _context.Bills != null ? 
-                          View(await _context.Bills.ToListAsync()) :
-                          Problem("Entity set 'QLDBcontext.Bills'  is null.");
+              return _context.Bill != null ? 
+                          View(await _context.Bill.ToListAsync()) :
+                          Problem("Entity set 'BTLONKY5Context.Bill'  is null.");
         }
 
         // GET: Bill/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Bills == null)
+            if (id == null || _context.Bill == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bills
+            var bill = await _context.Bill
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bill == null)
             {
@@ -55,7 +56,7 @@ namespace BTLONKY5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,DateCheckin,DateCheckout,IDBooking,TotalAmount,IDAccount")] Bill bill)
+        public async Task<IActionResult> Create([Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill bill)
         {
             if (ModelState.IsValid)
             {
@@ -69,12 +70,12 @@ namespace BTLONKY5.Controllers
         // GET: Bill/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Bills == null)
+            if (id == null || _context.Bill == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bills.FindAsync(id);
+            var bill = await _context.Bill.FindAsync(id);
             if (bill == null)
             {
                 return NotFound();
@@ -87,7 +88,7 @@ namespace BTLONKY5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,DateCheckin,DateCheckout,IDBooking,TotalAmount,IDAccount")] Bill bill)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,IDBooking,TotalAmount,IDAccount")] Bill bill)
         {
             if (id != bill.ID)
             {
@@ -120,12 +121,12 @@ namespace BTLONKY5.Controllers
         // GET: Bill/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Bills == null)
+            if (id == null || _context.Bill == null)
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bills
+            var bill = await _context.Bill
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bill == null)
             {
@@ -140,14 +141,14 @@ namespace BTLONKY5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Bills == null)
+            if (_context.Bill == null)
             {
-                return Problem("Entity set 'QLDBcontext.Bills'  is null.");
+                return Problem("Entity set 'BTLONKY5Context.Bill'  is null.");
             }
-            var bill = await _context.Bills.FindAsync(id);
+            var bill = await _context.Bill.FindAsync(id);
             if (bill != null)
             {
-                _context.Bills.Remove(bill);
+                _context.Bill.Remove(bill);
             }
             
             await _context.SaveChangesAsync();
@@ -156,7 +157,7 @@ namespace BTLONKY5.Controllers
 
         private bool BillExists(int id)
         {
-          return (_context.Bills?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Bill?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

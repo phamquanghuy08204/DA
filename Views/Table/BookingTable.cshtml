@@ -248,85 +248,63 @@
 			</div>
 		</div>
 	</div>
+		@model List<BTLONKY5.Models.Table>
 
-     <h1 style="text-align: center;">Quản lý đặt bàn</h1>
+		<h1 style="text-align: center;">Quản lý đặt bàn</h1>
 
-<div class="tables" style="text-align: center;">
-  <div class="table" data-id="1">Bàn 1</div>
-  <div class="table" data-id="2">Bàn 2</div>
-  <div class="table" data-id="3">Bàn 3</div>
-  <div class="table" data-id="3">Bàn 4</div>
-  <div class="table" data-id="3">Bàn 5</div>
-  <div class="table" data-id="3">Bàn 6</div>
-  <div class="table" data-id="3">Bàn 7</div>
+		<div class="tables" style="text-align: center;">
+			@foreach (var table in Model)
+			{
+				<a href="/Booking/Booking?id=@table.Id" class="table @(table.Status)" data-id="@table.Id">
+					Bàn @table.Id
+				</a>
+				<div class="table-info" id="table-info" style="display: none;">
+					<h2>Thông tin bàn</h2>
+					<p data-capacity="@table.Capacity"><strong>Số người:</strong> <span id="num-customers"></span></p>
+					<p class="table @(table.Status)"><strong>Đặt cọc:</strong> <span id="deposit"></span></p>
+				</div>
+			}
+		</div>
 
-  <div class="table" data-id="3">Bàn 8</div>
-  <div class="table" data-id="3">Bàn 9</div>
-  <div class="table" data-id="3">Bàn 10</div>
-  <div class="table" data-id="3">Bàn 11</div>
-  <div class="table" data-id="3">Bàn 12</div>
 
+		
 
-  <div class="table" data-id="3">Bàn 12</div>
-  <div class="table" data-id="3">Bàn 14</div>
-  <div class="table" data-id="3">Bàn 15</div>
-  <div class="table" data-id="3">Bàn 16</div>
-  <div class="table" data-id="3">Bàn 17</div>
-  <div class="table" data-id="3">Bàn 18</div>
-  <div class="table" data-id="3">Bàn 19</div>
-  <div class="table" data-id="3">Bàn 20</div>
-  <!-- Thêm các bàn khác vào đây -->
-</div>
+		@*@section Scripts {
+			<script>
+				// JavaScript code here
+				const tables = document.querySelectorAll('.table');
+				const tableInfo = document.getElementById('table-info');
+				const numCustomers = document.getElementById('num-customers');
+				const deposit = document.getElementById('deposit');
+				const mergeBtn = document.getElementById('merge-btn');
+				const changeBtn = document.getElementById('change-btn');
 
-<div class="table-info" id="table-info">
-  <h2>Thông tin bàn</h2>
-  <p><strong>Số người:</strong> <span id="num-customers"></span></p>
-  <p><strong>Đặt cọc:</strong> <span id="deposit"></span></p>
-  <button id="merge-btn">Ghép bàn</button>
-  <button id="change-btn">Đổi bàn</button>
-</div>
+				tables.forEach(table => {
+					table.addEventListener('click', () => {
+						const id = table.getAttribute('data-id');
+						const num = Math.floor(Math.random() * 6) + 1; // Số người ngẫu nhiên từ 1 đến 6
+						const hasDeposit = Math.random() < 0.5; // Ngẫu nhiên đặt cọc
 
-<script>
-  const tables = document.querySelectorAll('.table');
-  const tableInfo = document.getElementById('table-info');
-  const numCustomers = document.getElementById('num-customers');
-  const deposit = document.getElementById('deposit');
-  const mergeBtn = document.getElementById('merge-btn');
-  const changeBtn = document.getElementById('change-btn');
+						numCustomers.textContent = num;
+						deposit.textContent = hasDeposit ? 'Có' : 'Không';
 
-  tables.forEach(table => {
-    table.addEventListener('click', () => {
-      const id = table.getAttribute('data-id');
-      const num = Math.floor(Math.random() * 6) + 1; // Số người ngẫu nhiên từ 1 đến 6
-      const hasDeposit = Math.random() < 0.5; // Ngẫu nhiên đặt cọc   
+						tableInfo.style.display = 'block';
+						tableInfo.style.top = `${table.offsetTop + table.offsetHeight}px`;
+						tableInfo.style.left = `${table.offsetLeft}px`;
 
-      numCustomers.textContent = num;
-      deposit.textContent = hasDeposit ? 'Có' : 'Không';
+						if (hasDeposit) {
+							table.classList.add('reserved');
+							table.classList.remove('empty');
+						} else {
+							table.classList.add('empty');
+							table.classList.remove('reserved');
+						}
 
-      tableInfo.style.display = 'block';
-      tableInfo.style.top = `${table.offsetTop + table.offsetHeight}px`;
-      tableInfo.style.left = `${table.offsetLeft}px`;
-
-      if (hasDeposit) {
-        table.classList.add('reserved');
-        table.classList.remove('empty');
-      } else {
-        table.classList.add('empty');
-        table.classList.remove('reserved');
-      }
-
-      mergeBtn.addEventListener('click', () => {
-        alert(`Bạn đã chọn ghép bàn ${id}`);
-        tableInfo.style.display = 'none';
-      });
-
-      changeBtn.addEventListener('click', () => {
-        alert(`Bạn đã chọn đổi bàn ${id}`);
-        tableInfo.style.display = 'none';
-      });
-    });
-  });
-</script>
+						});
+					});
+				});
+			</script>
+		}*@
 
 
 

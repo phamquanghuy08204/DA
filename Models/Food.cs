@@ -12,7 +12,7 @@ namespace BTLONKY5.Models
 		public int IDCategory { get; set;}
 		public string ImgFood { get; set; }
 		public string Description { get; set; }
-		public float PriceFood { get; set; }
+		public int PriceFood { get; set; }
 
 	}
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\DA test\\BTLONKY5.csproj": {}
+    "C:\\DA\\BTLONKY5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\DA test\\BTLONKY5.csproj": {
+    "C:\\DA\\BTLONKY5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\DA test\\BTLONKY5.csproj",
+        "projectUniqueName": "C:\\DA\\BTLONKY5.csproj",
         "projectName": "BTLONKY5",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\DA test\\BTLONKY5.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\DA test\\obj\\",
+        "projectPath": "C:\\DA\\BTLONKY5.csproj",
+        "packagesPath": "C:\\Users\\Vostro\\.nuget\\packages\\",
+        "outputPath": "C:\\DA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vostro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
