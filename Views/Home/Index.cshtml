@@ -68,9 +68,8 @@
 							</div>
 							<nav class="navbar">
 								<ul class="navbar_menu">
-									<li><a href="Index.html">home</a></li>
+									<li><a href="@Url.Action("Index", "Home")">Home</a></li>
 									<li><a href="categories.html">menu</a></li>
-									<li><a href="Promotion.html">about us</a></li>
 									<li><a href="single.html">membership</a></li>
 									<li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
 								</ul>
@@ -105,41 +104,24 @@
 							usd
 							<i class="fa fa-angle-down"></i>
 						</a>
-						<ul class="menu_selection">
-							<li><a href="#">cad</a></li>
-							<li><a href="#">aud</a></li>
-							<li><a href="#">eur</a></li>
-							<li><a href="#">gbp</a></li>
-						</ul>
+						
 					</li>
-					<li class="menu_item has-children">
-						<a href="#">
-							English
-							<i class="fa fa-angle-down"></i>
-						</a>
-						<ul class="menu_selection">
-							<li><a href="#">French</a></li>
-							<li><a href="#">Italian</a></li>
-							<li><a href="#">German</a></li>
-							<li><a href="#">Spanish</a></li>
-						</ul>
-					</li>
+					
 					<li class="menu_item has-children">
 						<a href="#">
 							My Account
 							<i class="fa fa-angle-down"></i>
 						</a>
-						<ul class="menu_selection">
-							<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-							<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+						<ul class="account_selection">
+							<li><a href="@Url.Action("Login","Account")"><i class="fa fa-sign-in" aria-hidden="true"></i>ĐĂNG NHẬP</a></li>
+							<li><a href="@Url.Action("Register", "Account")"><i class="fa fa-user-plus" aria-hidden="true"></i>ĐĂNG KÝ</a></li>
 						</ul>
 					</li>
-					<li><a href="Index.html">home</a></li>
+					<li><a href="@Url.Action("Index", "Home")">Home</a></li>
 					<li><a href="categories.html">menu</a></li>
-					<li><a href="Promotion.html">about us</a></li>
 					<li><a href="single.html">membership</a></li>
-					<li><a href="contact.html">connect to us</a></li>
-					<li><a href="contact.html">contact</a></li>
+					<li><a href="@Url.Action("Contact", "Home")">connect to us</a></li>
+					<li><a href="@Url.Action("Contact", "Home")">contact</a></li>
 				</ul>
 			</div>
 		</div>
