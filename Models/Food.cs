@@ -10,9 +10,10 @@ namespace BTLONKY5.Models
 		public string NameFood { get; set; }
 		[ForeignKey("Category")]
 		public int IDCategory { get; set;}
+		public Category Category { get; set; }
 		public string ImgFood { get; set; }
 		public string Description { get; set; }
-		public float PriceFood { get; set; }
+		public double PriceFood { get; set; }
 
 	}
 }

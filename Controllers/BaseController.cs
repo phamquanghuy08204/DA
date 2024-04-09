@@ -25,15 +25,15 @@ namespace BTLONKY5.Controllers
 			}
 
 		}
-		public override void OnActionExecuted(ActionExecutedContext context)
+		public override void OnActionExecuted(ActionExecutedContext filterContext)
 		{
-			base.OnActionExecuted(context);
+			base.OnActionExecuted(filterContext);
 		}
 		public override void OnActionExecuting(ActionExecutingContext context)
 		{
 			base.OnActionExecuting(context);
-			var isAdmin = HttpContext.Session.GetString("isAdmin");
-			ViewBag.isAdmin = isAdmin;
+			//var isAdmin = HttpContext.Session.GetString("isAdmin");
+			//ViewBag.isAdmin = isAdmin;
 			ViewBag.UserName = CurrentUser;
 		}
 	}
